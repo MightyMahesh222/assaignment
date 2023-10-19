@@ -1,0 +1,48 @@
+* {
+  font-family: 'Roboto';
+}
+li {
+  display: flex;
+  list-style-type: none;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.deleteIcon {
+  height: 2vh;
+  display: flex;
+}
+.logoIcon {
+  height: 2vh;
+  padding-left: 2vh;
+}
+.time {
+  font-size: 1.5vh;
+  font-weight: 500;
+  padding: 5px;
+}
+.title {
+  font-size: 1.5vh;
+  padding-left: 1vh;
+  font-weight: 600;
+}
+.domain {
+  font-size: 1.5vh;
+  color: #64748b;
+  padding-left: 1vh;
+}
+.middlePart {
+  display: flex;
+  align-items: center;
+  padding: 1vh;
+}
+.spaceBetween {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
