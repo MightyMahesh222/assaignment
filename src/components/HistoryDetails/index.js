@@ -85,15 +85,12 @@ class HistoryDetails extends Component {
 
   deleteHistory = unq => {
     const {copiedHistoryList} = this.state
-    const filteredUsersData = copiedHistoryList.filter(
-      each => each.uniqueNo !== unq,
-    )
+    const filteredUsersData = copiedHistoryList.filter(each => each.id !== unq)
     this.setState({copiedHistoryList: filteredUsersData})
   }
 
   render() {
     const {searchInput, copiedHistoryList} = this.state
-    console.log(copiedHistoryList)
     const searchedResult = copiedHistoryList.filter(search =>
       search.title.toLowerCase().includes(searchInput.toLowerCase()),
     )
@@ -121,18 +118,29 @@ class HistoryDetails extends Component {
           </div>
         </div>
 
-        <div className="historyContainer">
-          <ul>
-            {searchedResult.map(searched => (
-              <Searching
-                key={searched.id}
-                unq={searched.id}
-                Details={searched}
-                deleting={this.deleteHistory}
-              />
-            ))}
-          </ul>
-        </div>
+        {copiedHistoryList.length > 0 ? (
+          <div className="historyContainer">
+            <ul>
+              {searchedResult.map(searched => (
+                <Searching
+                  key={searched.id}
+                  unq={searched.id}
+                  Details={searched}
+                  deleting={this.deleteHistory}
+                />
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div className="noHistory">
+            <p>There is no history to show</p>
+          </div>
+        )}
+        {searchedResult.length <= 0 ? (
+          <div className="noHistory">
+            <p>There is no history to show</p>
+          </div>
+        ) : null}
       </div>
     )
   }
