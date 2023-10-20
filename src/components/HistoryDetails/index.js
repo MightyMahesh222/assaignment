@@ -3,27 +3,25 @@ import './index.css'
 import Searching from '../SocialHistory'
 
 class HistoryDetails extends Component {
-  state = {searchInput: ''}
+  state = {searchInput: '', initialHistoryList: this.props}
 
   userSearch = event => {
     this.setState({searchInput: event.target.value})
   }
 
   deleteHistory = unq => {
-    const {initialHistoryList} = this.state
+    const {initialHistoryList} = this.props
     const filteredUsersData = initialHistoryList.filter(
       each => each.uniqueNo !== unq,
     )
-    this.initialHistoryList = filteredUsersData
+    this.setState({initialHistoryList: filteredUsersData})
   }
 
   render() {
-    const {searchInput} = this.state
-    const {initialHistoryList} = this.props
+    const {searchInput, initialHistoryList} = this.state
     const searchedResult = initialHistoryList.filter(search =>
       search.title.toLowerCase().includes(searchInput.toLowerCase()),
     )
-    console.log(searchedResult)
     return (
       <div className="mainContainer">
         <div className="searchContainer">
